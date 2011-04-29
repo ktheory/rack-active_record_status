@@ -1,0 +1,49 @@
+= Active Record Rack Status
+
+Lightweight Rack Middleware for testing active record connections
+
+== Installation
+
+  gem install rack-active_record_status
+
+== Basic Usage
+
+  require 'rack/active_record_status'
+  use Rack::ActiveRecordStatus
+
+Or, if you are using Bundler, just add this to your Gemfile:
+
+  gem 'rack-active_record_status'
+
+To use Rack::ActiveRecordStatus in your Rails application, add the following line to your application
+config file (<tt>config/application.rb</tt> for Rails 3, <tt>config/environment.rb</tt> for Rails 2):
+
+  config.middleware.use Rack::ActiveRecordStatus
+
+== Sponsorship
+
+All new work on active_record_rack_status is sponsored by {Medidata Solutions}[http://github.com/mdsol]
+== Copyright
+
+(The MIT License)
+
+Copyright (c) 2011 {Aaron Suggs}[http://github.com/ktheory]
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
