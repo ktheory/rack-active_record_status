@@ -13,7 +13,7 @@ Lightweight Rack Middleware for testing active record connections
 
 Or, if you are using Bundler, just add this to your Gemfile:
 
-  gem 'rack-active_record_status'
+  gem 'rack-active_record_status', :require => 'rack/active_record_status'
 
 To use Rack::ActiveRecordStatus in your Rails application, add the following line to your application
 config file (<tt>config/application.rb</tt> for Rails 3, <tt>config/environment.rb</tt> for Rails 2):
