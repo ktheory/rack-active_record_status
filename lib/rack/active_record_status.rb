@@ -1,11 +1,11 @@
 module Rack
   class ActiveRecordStatus
-    def initialize(app)
-      @app = app
+    def initialize(app, path='/active_record_status')
+      @app, @path = app, path
     end
 
     def call(env)
-      if env['PATH_INFO'] == '/active_record_status'
+      if @path == env['PATH_INFO']
         get_status
       else
         @app.call(env)

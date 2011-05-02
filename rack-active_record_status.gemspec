@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'rack-active_record_status'
-  s.version = '0.2'
+  s.version = '0.3'
 
   s.summary = "Rack middelware to check ActiveRecord's connection"
   s.description = "A server health check for active_record."
