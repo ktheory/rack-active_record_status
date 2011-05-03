@@ -1,6 +1,6 @@
 module Rack
   class ActiveRecordStatus
-    def initialize(app, path='/active_record_status')
+    def initialize(app, path='/app_status')
       @app, @path = app, path
     end
 

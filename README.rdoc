@@ -22,9 +22,13 @@ config file (<tt>config/application.rb</tt> for Rails 3, <tt>config/environment.
 
 Test your ActiveRecord connection by hitting
 
-  /active_record_status
+  GET /app_status
 
 Anything other than a 200 OK HTTP response code is an error.
+
+You may change which path the app middleware uses by passing an argument:
+
+  config.middleware.use Rack::ActiveRecordStatus, '/custom_path'
 
 == Sponsorship
 
