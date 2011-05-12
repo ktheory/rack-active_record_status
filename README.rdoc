@@ -20,6 +20,9 @@ config file (<tt>config/application.rb</tt> for Rails 3, <tt>config/environment.
 
   config.middleware.use Rack::ActiveRecordStatus
 
+  # In older Rails, like 2.3.4, defer loading using a string:
+  config.middleware.use "Rack::ActiveRecordStatus"
+
 Test your ActiveRecord connection by hitting
 
   GET /app_status
