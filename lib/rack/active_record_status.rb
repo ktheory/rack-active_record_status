@@ -15,8 +15,8 @@ module Rack
     def get_status
       begin
         ActiveRecord::Base.connection.select_all('select 1')
-        body = "OK #{Time.now}"
-        [200, {'Content-Type' => 'text/plain'}, body]
+        # Success
+        [200, {'Content-Type' => 'text/plain'}, "OK #{Time.now}\n"]
       rescue
         body = ['ERROR', "#{$!.class}: #{$!.message}", "Backtrace:"] + $!.backtrace
         body *= "\n"
