@@ -29,9 +29,19 @@ Test your ActiveRecord connection by hitting
 
 Anything other than a 200 OK HTTP response code is an error.
 
-You may change which path the app middleware uses by passing an argument:
+== Configuration
 
-  config.middleware.use Rack::ActiveRecordStatus, '/custom_path'
+Use the `:path` option to configure what patht eh middleware responds to.
+Use the `:response` option to change the default response. If the response responds_to `call`, it will be called (e.g., Procs and lambdas)
+
+  config.middleware.use Rack::ActiveRecordStatus, :path => '/custom_path'
+  config.middleware.use Rack::ActiveRecordStatus, :response => "I'm alive!"
+  config.middleware.use Rack::ActiveRecordStatus, :response => lambda { "A random number is #{rand} }
+
+For rails apps, a useful response is the REVISION file created by deployment tools (like Capistrano).
+
+  revision = Rails.root.join('REVISION').read rescue $!
+  config.middleware.use Rack::ActiveRecordStatus, :response => revision
 
 == Sponsorship
 

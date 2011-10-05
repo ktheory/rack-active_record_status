@@ -1,7 +1,12 @@
 module Rack
   class ActiveRecordStatus
-    def initialize(app, path='/app_status')
-      @app, @path = app, path
+    def initialize(app, options={})
+      @app = app
+      # Support legacy arguments (0.4.1 and below)
+      options = {:path => options} if options.is_a?(String)
+
+      @path = options[:path] || '/app_status'
+      @response = options[:response] || lambda { "OK #{Time.now}\n" }
     end
 
     def call(env)
@@ -14,9 +19,10 @@ module Rack
 
     def get_status
       begin
+        # Check that the application is connected to the database
         ActiveRecord::Base.connection.select_all('select 1')
         # Success
-        [200, {'Content-Type' => 'text/plain'}, "OK #{Time.now}\n"]
+        [200, {'Content-Type' => 'text/plain'}, @response]
       rescue
         body = ['ERROR', "#{$!.class}: #{$!.message}", "Backtrace:"] + $!.backtrace
         body *= "\n"
