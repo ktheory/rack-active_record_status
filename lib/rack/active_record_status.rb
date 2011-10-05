@@ -6,7 +6,7 @@ module Rack
       options = {:path => options} if options.is_a?(String)
 
       @path = options[:path] || '/app_status'
-      @response = options[:response] || lambda { "OK #{Time.now}\n" }
+      @response = options[:response] || "OK\n"
     end
 
     def call(env)

@@ -32,15 +32,14 @@ Anything other than a 200 OK HTTP response code is an error.
 == Configuration
 
 Use the `:path` option to configure what patht eh middleware responds to.
-Use the `:response` option to change the default response. If the response responds_to `call`, it will be called (e.g., Procs and lambdas)
+Use the `:response` option to change the default response.
 
-  config.middleware.use Rack::ActiveRecordStatus, :path => '/custom_path'
-  config.middleware.use Rack::ActiveRecordStatus, :response => "I'm alive!"
-  config.middleware.use Rack::ActiveRecordStatus, :response => lambda { "A random number is #{rand} }
+  config.middleware.use Rack::ActiveRecordStatus, :path => '/custom_path' # Respond on /custom_path
+  config.middleware.use Rack::ActiveRecordStatus, :response => "I'm alive!" # A different response
 
 For rails apps, a useful response is the REVISION file created by deployment tools (like Capistrano).
 
-  revision = Rails.root.join('REVISION').read rescue $!
+  revision = Rails.root.join('REVISION').read rescue $!.to_s
   config.middleware.use Rack::ActiveRecordStatus, :response => revision
 
 == Sponsorship
