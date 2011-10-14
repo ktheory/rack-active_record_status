@@ -22,11 +22,11 @@ module Rack
         # Check that the application is connected to the database
         ActiveRecord::Base.connection.select_all('select 1')
         # Success
-        [200, {'Content-Type' => 'text/plain'}, @response]
+        [200, {'Content-Type' => 'text/plain'}, [@response]]
       rescue
         body = ['ERROR', "#{$!.class}: #{$!.message}", "Backtrace:"] + $!.backtrace
         body *= "\n"
-        [500, {'Content-Type' => 'text/plain'}, body]
+        [500, {'Content-Type' => 'text/plain'}, [body]]
       end
     end
   end
