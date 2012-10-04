@@ -20,7 +20,7 @@ module Rack
     def get_status
       begin
         # Check that the application is connected to the database
-        ActiveRecord::Base.connection.select_all('select 1')
+        ActiveRecord::Base.connection.select_all('select "app_status"')
         # Success
         [200, {'Content-Type' => 'text/plain'}, [@response]]
       rescue
